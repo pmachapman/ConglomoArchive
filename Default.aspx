@@ -11,7 +11,7 @@
     <p>Welcome to the Conglomo Public Archives.</p>
     <asp:Repeater runat="server" ID="FileList">
         <ItemTemplate>
-            <a href='<%# Eval("Url") %>'><img src='<%# Eval("Icon") %>' alt='<%# Eval("Name") %>' align="absmiddle" /></a> <a href='<%# Eval("Url") %>'><%# Eval("Name") %></a><br />
+            <a href='<%# Eval("Url") %>'><img src='<%# Eval("Icon") %>' alt='<%# Eval("Name") %>' align="absmiddle" height="16" width="16" /></a> <a href='<%# Eval("Url") %>'><%# Eval("Name") %></a><br />
         </ItemTemplate>
     </asp:Repeater>
     <p align="right">&copy; <%= DateTime.Now.Year %> Peter Chapman</p>
