@@ -85,6 +85,7 @@
     <Content Include="FileIcons\xml.png" />
     <Content Include="FileIcons\zip.png" />
     <Content Include="google31f0ba739de58f42.html" />
+    <Content Include="robots.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

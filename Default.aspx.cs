@@ -30,7 +30,7 @@ namespace Conglomo.Archive
         /// <summary>
         /// The invalid files.
         /// </summary>
-        private static string[] invalidFiles = new string[] { "FAVICON.ICO", "GOOGLE31F0BA739DE58F42.HTML" };
+        private static string[] invalidFiles = new string[] { "FAVICON.ICO", "GOOGLE31F0BA739DE58F42.HTML", "ROBOTS.TXT" };
 
         /// <summary>
         /// Handles the Load event of the Page
