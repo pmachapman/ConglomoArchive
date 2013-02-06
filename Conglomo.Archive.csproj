@@ -84,7 +84,10 @@
     <Content Include="FileIcons\xls.png" />
     <Content Include="FileIcons\xml.png" />
     <Content Include="FileIcons\zip.png" />
-    <Content Include="Web.config" />
+    <Content Include="google31f0ba739de58f42.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Default.aspx.cs">

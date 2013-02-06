@@ -25,7 +25,12 @@ namespace Conglomo.Archive
         /// <summary>
         /// The invalid file extensions.
         /// </summary>
-        private static string[] invalidFileExtensions = new string[] { ".ASPX", ".CONFIG", ".ICO" };
+        private static string[] invalidFileExtensions = new string[] { ".ASPX", ".CONFIG" };
+
+        /// <summary>
+        /// The invalid files.
+        /// </summary>
+        private static string[] invalidFiles = new string[] { "FAVICON.ICO", "GOOGLE31F0BA739DE58F42.HTML" };
 
         /// <summary>
         /// Handles the Load event of the Page
@@ -108,7 +113,8 @@ namespace Conglomo.Archive
                 FileInfo fileInfo = new FileInfo(path);
 
                 // Exclude invalid file types
-                if (!invalidFileExtensions.Contains(fileInfo.Extension.ToUpperInvariant()))
+                if (!invalidFileExtensions.Contains(fileInfo.Extension.ToUpperInvariant())
+                    && !invalidFiles.Contains(fileInfo.Name.ToUpperInvariant()))
                 {
                     // Get the icon
                     string icon = "~/FileIcons/" + GetCommonExtension(fileInfo.Extension.TrimStart('.')) + ".png";
