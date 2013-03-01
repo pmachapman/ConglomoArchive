@@ -10,6 +10,7 @@ namespace Conglomo.Archive
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Web;
     using System.Web.UI;
 
     /// <summary>
@@ -86,51 +87,62 @@ namespace Conglomo.Archive
                 webFiles.Add(webFile);
             }
 
-            // Add directories in the directory
-            foreach (string path in Directory.GetDirectories(Server.MapPath(folder), "*.*", SearchOption.TopDirectoryOnly).OrderBy(f => f))
+            try
             {
-                // Get the directory info
-                DirectoryInfo directoryInfo = new DirectoryInfo(path);
-
-                // Exclude invalid directories
-                if (!invalidDirectories.Contains(directoryInfo.Name.ToUpperInvariant()))
+                // Add directories in the directory
+                foreach (string path in Directory.GetDirectories(Server.MapPath(folder), "*.*", SearchOption.TopDirectoryOnly).OrderBy(f => f))
                 {
-                    // Build the web file object
-                    WebFile webFile = new WebFile();
-                    webFile.Icon = new Uri(ResolveUrl("~/FileIcons/folder.png"), UriKind.Relative);
-                    webFile.Name = directoryInfo.Name;
-                    webFile.Url = new Uri(ResolveUrl("~/Default.aspx") + "?folder=" + folder.Substring(1) + directoryInfo.Name, UriKind.Relative);
+                    // Get the directory info
+                    DirectoryInfo directoryInfo = new DirectoryInfo(path);
 
-                    // Add the web file to the list
-                    webFiles.Add(webFile);
+                    // Exclude invalid directories
+                    if (!invalidDirectories.Contains(directoryInfo.Name.ToUpperInvariant()))
+                    {
+                        // Build the web file object
+                        WebFile webFile = new WebFile();
+                        webFile.Icon = new Uri(ResolveUrl("~/FileIcons/folder.png"), UriKind.Relative);
+                        webFile.Name = directoryInfo.Name;
+                        webFile.Url = new Uri(ResolveUrl("~/Default.aspx") + "?folder=" + folder.Substring(1) + directoryInfo.Name, UriKind.Relative);
+
+                        // Add the web file to the list
+                        webFiles.Add(webFile);
+                    }
+                }
+
+                // Add files in the directory
+                foreach (string path in Directory.GetFiles(Server.MapPath(folder), "*.*", SearchOption.TopDirectoryOnly).OrderBy(f => f))
+                {
+                    // Get the file info
+                    FileInfo fileInfo = new FileInfo(path);
+
+                    // Exclude invalid file types
+                    if (!invalidFileExtensions.Contains(fileInfo.Extension.ToUpperInvariant())
+                        && !invalidFiles.Contains(fileInfo.Name.ToUpperInvariant()))
+                    {
+                        // Get the icon
+                        string icon = "~/FileIcons/" + GetCommonExtension(fileInfo.Extension.TrimStart('.')) + ".png";
+                        if (!File.Exists(Server.MapPath(icon)))
+                        {
+                            icon = "~/FileIcons/default.png";
+                        }
+
+                        // Build the web file object
+                        WebFile webFile = new WebFile();
+                        webFile.Icon = new Uri(ResolveUrl(icon), UriKind.Relative);
+                        webFile.Name = fileInfo.Name;
+                        webFile.Url = new Uri(ResolveUrl(folder + fileInfo.Name), UriKind.Relative);
+
+                        // Add the web file to the list
+                        webFiles.Add(webFile);
+                    }
                 }
             }
-
-            // Add files in the directory
-            foreach (string path in Directory.GetFiles(Server.MapPath(folder), "*.*", SearchOption.TopDirectoryOnly).OrderBy(f => f))
+            catch (Exception ex)
             {
-                // Get the file info
-                FileInfo fileInfo = new FileInfo(path);
-
-                // Exclude invalid file types
-                if (!invalidFileExtensions.Contains(fileInfo.Extension.ToUpperInvariant())
-                    && !invalidFiles.Contains(fileInfo.Name.ToUpperInvariant()))
+                if (!(ex is DirectoryNotFoundException
+                    || ex is HttpException))
                 {
-                    // Get the icon
-                    string icon = "~/FileIcons/" + GetCommonExtension(fileInfo.Extension.TrimStart('.')) + ".png";
-                    if (!File.Exists(Server.MapPath(icon)))
-                    {
-                        icon = "~/FileIcons/default.png";
-                    }
-
-                    // Build the web file object
-                    WebFile webFile = new WebFile();
-                    webFile.Icon = new Uri(ResolveUrl(icon), UriKind.Relative);
-                    webFile.Name = fileInfo.Name;
-                    webFile.Url = new Uri(ResolveUrl(folder + fileInfo.Name), UriKind.Relative);
-
-                    // Add the web file to the list
-                    webFiles.Add(webFile);
+                    throw;
                 }
             }
 
