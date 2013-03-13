@@ -50,8 +50,13 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="FileIcons\asf.png" />
+    <Content Include="FileIcons\asm.png" />
+    <Content Include="FileIcons\bas.png" />
     <Content Include="FileIcons\bmp.png" />
+    <Content Include="FileIcons\c.png" />
     <Content Include="FileIcons\cgi.png" />
+    <Content Include="FileIcons\cpp.png" />
+    <Content Include="FileIcons\cs.png" />
     <Content Include="FileIcons\css.png" />
     <Content Include="FileIcons\db.png" />
     <Content Include="FileIcons\default.png" />
@@ -61,6 +66,7 @@
     <Content Include="FileIcons\flv.png" />
     <Content Include="FileIcons\folder.png" />
     <Content Include="FileIcons\gif.png" />
+    <Content Include="FileIcons\h.png" />
     <Content Include="FileIcons\htm.png" />
     <Content Include="FileIcons\ini.png" />
     <Content Include="FileIcons\jpg.png" />
@@ -79,6 +85,7 @@
     <Content Include="FileIcons\swf.png" />
     <Content Include="FileIcons\tif.png" />
     <Content Include="FileIcons\txt.png" />
+    <Content Include="FileIcons\vb.png" />
     <Content Include="FileIcons\vbs.png" />
     <Content Include="FileIcons\wmv.png" />
     <Content Include="FileIcons\xls.png" />
