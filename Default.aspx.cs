@@ -68,6 +68,9 @@ namespace Conglomo.Archive
             // If we are not in the root directory, show the navigate up button
             if (folder != "~/")
             {
+                // Show the path in the title
+                Page.Title = "Conglomo Archives - " + folder.TrimStart('~').Trim('/');
+
                 // Build the web file object
                 WebFile webFile = new WebFile();
                 webFile.Icon = new Uri(ResolveUrl("~/FileIcons/previous.png"), UriKind.Relative);
