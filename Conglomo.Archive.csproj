@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BingSiteAuth.xml" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="FileIcons\asf.png" />
