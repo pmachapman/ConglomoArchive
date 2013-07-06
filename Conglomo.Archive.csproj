@@ -38,6 +38,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -48,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BingSiteAuth.xml" />
+    <CodeAnalysisDictionary Include="CustomDictionary.xml" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="FileIcons\asf.png" />

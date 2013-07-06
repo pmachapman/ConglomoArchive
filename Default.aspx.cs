@@ -8,6 +8,8 @@ namespace Conglomo.Archive
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Web;
@@ -31,13 +33,14 @@ namespace Conglomo.Archive
         /// <summary>
         /// The invalid files.
         /// </summary>
-        private static string[] invalidFiles = new string[] { "FAVICON.ICO", "GOOGLE31F0BA739DE58F42.HTML", "ROBOTS.TXT" };
+        private static string[] invalidFiles = new string[] { "BINGSITEAUTH.XML", "FAVICON.ICO", "GOOGLE31F0BA739DE58F42.HTML", "ROBOTS.TXT" };
 
         /// <summary>
         /// Handles the Load event of the Page
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+        [SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "System.Web.UI.Page.set_Title(System.String)", Justification = "The site name should not be localised")]
         protected void Page_Load(object sender, EventArgs e)
         {
             // Get the folder we are looking at
@@ -69,7 +72,7 @@ namespace Conglomo.Archive
             if (folder != "~/")
             {
                 // Show the path in the title
-                Page.Title = "Conglomo Archives - " + folder.TrimStart('~').Trim('/');
+                Page.Title = string.Format(CultureInfo.CurrentCulture, "Conglomo Archives - {0}", folder.TrimStart('~').Trim('/'));
 
                 // Build the web file object
                 WebFile webFile = new WebFile();
