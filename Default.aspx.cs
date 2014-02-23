@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="Default.aspx.cs" company="Conglomo">
-// Copyright 2013 Peter Chapman. All Rights Reserved.
+// Copyright 2014 Peter Chapman. All Rights Reserved.
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ namespace Conglomo.Archive
         /// <summary>
         /// The invalid directories.
         /// </summary>
-        private static string[] invalidDirectories = new string[] { "BIN", "OBJ", "FILEICONS" };
+        private static string[] invalidDirectories = new string[] { "BIN", "OBJ", "FILEICONS", "APP_DATA" };
 
         /// <summary>
         /// The invalid file extensions.
@@ -72,7 +72,10 @@ namespace Conglomo.Archive
             if (folder != "~/")
             {
                 // Show the path in the title
-                Page.Title = string.Format(CultureInfo.CurrentCulture, "Conglomo Archives - {0}", folder.TrimStart('~').Trim('/'));
+                this.Page.Title = string.Format(CultureInfo.CurrentCulture, "Conglomo Archives - {0}", folder.TrimStart('~').Trim('/'));
+
+                // Update the meta description
+                this.Page.MetaDescription = string.Format(CultureInfo.CurrentCulture, "Conglomo Archives - Viewing {0}", folder.TrimStart('~').Trim('/'));
 
                 // Build the web file object
                 WebFile webFile = new WebFile();
@@ -82,7 +85,7 @@ namespace Conglomo.Archive
                 string parent = Path.Combine(directoryParts.Take(directoryParts.Length - 1).ToArray()).Replace("\\", "/");
                 if (string.IsNullOrEmpty(parent))
                 {
-                    webFile.Url = new Uri(ResolveUrl("~/Default.aspx"), UriKind.Relative);
+                    webFile.Url = new Uri(ResolveUrl("~/"), UriKind.Relative);
                 }
                 else
                 {
@@ -91,6 +94,10 @@ namespace Conglomo.Archive
 
                 // Add the web file to the list
                 webFiles.Add(webFile);
+            }
+            else
+            {
+                this.Page.MetaDescription = "Welcome to the Conglomo Archives";
             }
 
             try
@@ -126,7 +133,7 @@ namespace Conglomo.Archive
                         && !invalidFiles.Contains(fileInfo.Name.ToUpperInvariant()))
                     {
                         // Get the icon
-                        string icon = "~/FileIcons/" + GetCommonExtension(fileInfo.Extension.TrimStart('.')) + ".png";
+                        string icon = "~/FileIcons/" + GetCommonExtension(fileInfo.Extension.TrimStart('.').ToLower(CultureInfo.CurrentCulture)) + ".png";
                         if (!File.Exists(Server.MapPath(icon)))
                         {
                             icon = "~/FileIcons/default.png";

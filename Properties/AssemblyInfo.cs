@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="AssemblyInfo.cs" company="Conglomo">
-// Copyright 2013 Peter Chapman. All Rights Reserved.
+// Copyright 2014 Peter Chapman. All Rights Reserved.
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Conglomo")]
 [assembly: AssemblyProduct("Conglomo Archive")]
-[assembly: AssemblyCopyright("Copyright 2013 Peter Chapman.")]
+[assembly: AssemblyCopyright("Copyright 2014 Peter Chapman. All Rights Reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
