@@ -5,6 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Conglomo Archives</title>
     <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="~/favicon.ico" />
+    <link rel="alternate" href="~/RSS.ashx" type="application/rss+xml" title="Conglomo Archives" id="rss" />
 </head>
 <body>
     <h1>Conglomo Archives</h1>

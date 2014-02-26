@@ -21,26 +21,11 @@ namespace Conglomo.Archive
     public partial class Default : Page
     {
         /// <summary>
-        /// The invalid directories.
-        /// </summary>
-        private static string[] invalidDirectories = new string[] { "BIN", "OBJ", "FILEICONS", "APP_DATA" };
-
-        /// <summary>
-        /// The invalid file extensions.
-        /// </summary>
-        private static string[] invalidFileExtensions = new string[] { ".ASPX", ".CONFIG" };
-
-        /// <summary>
-        /// The invalid files.
-        /// </summary>
-        private static string[] invalidFiles = new string[] { "BINGSITEAUTH.XML", "FAVICON.ICO", "GOOGLE31F0BA739DE58F42.HTML", "ROBOTS.TXT" };
-
-        /// <summary>
         /// Handles the Load event of the Page
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        [SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "System.Web.UI.Page.set_Title(System.String)", Justification = "The site name should not be localised")]
+        [SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "The site name should not be localised")]
         protected void Page_Load(object sender, EventArgs e)
         {
             // Get the folder we are looking at
@@ -109,7 +94,7 @@ namespace Conglomo.Archive
                     DirectoryInfo directoryInfo = new DirectoryInfo(path);
 
                     // Exclude invalid directories
-                    if (!invalidDirectories.Contains(directoryInfo.Name.ToUpperInvariant()))
+                    if (!Settings.InvalidDirectories.Contains(directoryInfo.Name.ToUpperInvariant()))
                     {
                         // Build the web file object
                         WebFile webFile = new WebFile();
@@ -129,8 +114,8 @@ namespace Conglomo.Archive
                     FileInfo fileInfo = new FileInfo(path);
 
                     // Exclude invalid file types
-                    if (!invalidFileExtensions.Contains(fileInfo.Extension.ToUpperInvariant())
-                        && !invalidFiles.Contains(fileInfo.Name.ToUpperInvariant()))
+                    if (!Settings.InvalidFileExtensions.Contains(fileInfo.Extension.ToUpperInvariant())
+                        && !Settings.InvalidFiles.Contains(fileInfo.Name.ToUpperInvariant()))
                     {
                         // Get the icon
                         string icon = "~/FileIcons/" + GetCommonExtension(fileInfo.Extension.TrimStart('.').ToLower(CultureInfo.CurrentCulture)) + ".png";
