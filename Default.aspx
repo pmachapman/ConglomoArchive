@@ -6,6 +6,11 @@
     <title>Conglomo Archives</title>
     <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="~/favicon.ico" />
     <link rel="alternate" href="~/RSS.ashx" type="application/rss+xml" title="Conglomo Archives" id="rss" />
+    <script type="text/javascript">
+        var appInsights = { queue: [], start: function (n) { function r(n, t) { n[t] = function () { var i = arguments; n.queue.push(function () { n[t].apply(n, i) }) } } var t, i; this.applicationInsightsId = n; this.accountId = null; this.appUserId = null; r(this, "logEvent"); r(this, "logPageView"); t = document.createElement("script"); t.type = "text/javascript"; t.src = "//az416426.vo.msecnd.net/scripts/ai.js"; t.async = !0; i = document.getElementsByTagName("script")[0]; i.parentNode.insertBefore(t, i) } };
+        appInsights.start("75c0d219-f46e-4490-bd89-c4ef138fc566");
+        appInsights.logPageView();
+    </script>
 </head>
 <body>
     <h1>Conglomo Archives</h1>
