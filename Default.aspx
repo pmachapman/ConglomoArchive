@@ -7,7 +7,7 @@
     <link type="image/vnd.microsoft.icon" rel="shortcut icon" href="~/favicon.ico" />
     <link rel="alternate" href="~/RSS.ashx" type="application/rss+xml" title="Conglomo Archives" id="rss" />
     <script type="text/javascript">
-        window.appInsights = { queue: [], applicationInsightsId: null, accountId: null, appUserId: null, configUrl: null, start: function (n) { function u(n, t) { n[t] = function () { var i = arguments; n.queue.push(function () { n[t].apply(n, i) }) } } function f(n) { var t = document.createElement("script"); return t.type = "text/javascript", t.src = n, t.async = !0, t } function r() { i.appendChild(f("//az416426.vo.msecnd.net/scripts/ai.0.js")) } var i, t; this.applicationInsightsId = n; u(this, "logEvent"); u(this, "logPageView"); i = document.getElementsByTagName("script")[0].parentNode; this.configUrl === null ? r() : (t = f(this.configUrl), t.onload = r, t.onerror = r, i.appendChild(t)); this.start = function () { } } };
+        window.appInsights= {queue:[], applicationInsightsId:null, accountId:null, appUserId:null, configUrl:null, start:function(n){ function u(n){ t[n]=function(){ var i=arguments;t.queue.push(function(){ t[n].apply(t,i)})}} function f(n,t){ if(n){ var u=r.createElement(i); u.type="text/javascript"; u.src=n; u.async=!0;u.onload=t; u.onerror=t; r.getElementsByTagName(i)[0].parentNode.appendChild(u)} else t()} var r=document,t=this,i; t.applicationInsightsId=n; u("logEvent"); u("logPageView");i=" script"; f(t.configUrl,function(){ f("//az416426.vo.msecnd.net/scripts/a/ai.0.7.js")}); t.start=function(){}}};
         appInsights.start("7d8658a4-e9cd-4ea1-9b37-5fea83e692e7");
         appInsights.logPageView();
 </script>
