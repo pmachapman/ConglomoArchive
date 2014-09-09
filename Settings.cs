@@ -24,7 +24,7 @@ namespace Conglomo.Archive
         {
             get
             {
-                return new List<string>() { "BIN", "OBJ", "FILEICONS", "APP_DATA" }.AsReadOnly();
+                return new List<string>() { "BIN", "OBJ", "FILEICONS", "APP_DATA", ".GIT" }.AsReadOnly();
             }
         }
 
