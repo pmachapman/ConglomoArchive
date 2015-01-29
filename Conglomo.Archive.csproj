@@ -50,6 +50,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ApplicationInsights.config" />
     <Content Include="BingSiteAuth.xml" />
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
     <Content Include="Default.aspx" />
