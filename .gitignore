@@ -5,6 +5,7 @@
 *.Cache
 *.suo
 *.user
+/.vs
 /bin
 /obj
 Thumbs.db

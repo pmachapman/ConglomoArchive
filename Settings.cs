@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="Settings.cs" company="Conglomo">
-// Copyright 2015 Peter Chapman. All Rights Reserved.
+// Copyright 2015-2023 Conglomo Limited. All Rights Reserved.
 // </copyright>
 // -----------------------------------------------------------------------
 

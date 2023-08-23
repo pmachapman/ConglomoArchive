@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="WebFile.cs" company="Conglomo">
-// Copyright 2015 Peter Chapman. All Rights Reserved.
+// Copyright 2015-2023 Conglomo Limited. All Rights Reserved.
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -79,13 +79,13 @@ namespace Conglomo.Archive
         /// </returns>
         public override bool Equals(object obj)
         {
-            if (!(obj is WebFile))
+            if (!(obj is WebFile file))
             {
                 return false;
             }
             else
             {
-                return this.Equals((WebFile)obj);
+                return this.Equals(file);
             }
         }
 

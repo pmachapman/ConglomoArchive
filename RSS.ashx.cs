@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="RSS.ashx.cs" company="Conglomo">
-// Copyright 2015 Peter Chapman. All Rights Reserved.
+// Copyright 2015-2023 Conglomo Limited. All Rights Reserved.
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -8,7 +8,6 @@ namespace Conglomo.Archive
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Globalization;
     using System.IO;
     using System.Linq;

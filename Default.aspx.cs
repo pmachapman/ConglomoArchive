@@ -1,6 +1,6 @@
 ﻿// -----------------------------------------------------------------------
 // <copyright file="Default.aspx.cs" company="Conglomo">
-// Copyright 2015 Peter Chapman. All Rights Reserved.
+// Copyright 2015-2023 Conglomo Limited. All Rights Reserved.
 // </copyright>
 // -----------------------------------------------------------------------
 
@@ -8,7 +8,6 @@ namespace Conglomo.Archive
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.IO;
     using System.Linq;
@@ -25,7 +24,6 @@ namespace Conglomo.Archive
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        [SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "The site name should not be localised")]
         protected void Page_Load(object sender, EventArgs e)
         {
             // Get the folder we are looking at
@@ -63,9 +61,11 @@ namespace Conglomo.Archive
                 this.Page.MetaDescription = string.Format(CultureInfo.CurrentCulture, "Conglomo Archives - Viewing {0}", folder.TrimStart('~').Trim('/'));
 
                 // Build the web file object
-                WebFile webFile = new WebFile();
-                webFile.Icon = new Uri(ResolveUrl("~/FileIcons/previous.png"), UriKind.Relative);
-                webFile.Name = "Previous Directory";
+                WebFile webFile = new WebFile
+                {
+                    Icon = new Uri(ResolveUrl("~/FileIcons/previous.png"), UriKind.Relative),
+                    Name = "Previous Directory",
+                };
                 string[] directoryParts = folder.Substring(1).Trim('/').Split(new char[] { '/' }, StringSplitOptions.None);
                 string parent = Path.Combine(directoryParts.Take(directoryParts.Length - 1).ToArray()).Replace("\\", "/");
                 if (string.IsNullOrEmpty(parent))
@@ -97,10 +97,12 @@ namespace Conglomo.Archive
                     if (!Settings.InvalidDirectories.Contains(directoryInfo.Name.ToUpperInvariant()))
                     {
                         // Build the web file object
-                        WebFile webFile = new WebFile();
-                        webFile.Icon = new Uri(ResolveUrl("~/FileIcons/folder.png"), UriKind.Relative);
-                        webFile.Name = directoryInfo.Name;
-                        webFile.Url = new Uri(ResolveUrl("~/Default.aspx") + "?folder=" + folder.Substring(1) + directoryInfo.Name, UriKind.Relative);
+                        WebFile webFile = new WebFile
+                        {
+                            Icon = new Uri(ResolveUrl("~/FileIcons/folder.png"), UriKind.Relative),
+                            Name = directoryInfo.Name,
+                            Url = new Uri(ResolveUrl("~/Default.aspx") + "?folder=" + folder.Substring(1) + directoryInfo.Name, UriKind.Relative),
+                        };
 
                         // Add the web file to the list
                         webFiles.Add(webFile);
@@ -125,10 +127,12 @@ namespace Conglomo.Archive
                         }
 
                         // Build the web file object
-                        WebFile webFile = new WebFile();
-                        webFile.Icon = new Uri(ResolveUrl(icon), UriKind.Relative);
-                        webFile.Name = fileInfo.Name;
-                        webFile.Url = new Uri(ResolveUrl(folder + fileInfo.Name), UriKind.Relative);
+                        WebFile webFile = new WebFile
+                        {
+                            Icon = new Uri(ResolveUrl(icon), UriKind.Relative),
+                            Name = fileInfo.Name,
+                            Url = new Uri(ResolveUrl(folder + fileInfo.Name), UriKind.Relative),
+                        };
 
                         // Add the web file to the list
                         webFiles.Add(webFile);
